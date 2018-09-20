@@ -9,3 +9,7 @@ Predict total sales for every product and store in the next month from a  time-s
 
 - sales modified data csv notebook
     - Create a grid of shop_ids and item_ids for different date_block_num with corresponding item_cnt_month
+    
+
+- sales modified data csv(mean enc) notebook
+    - Add target mean encoding feature to the data
