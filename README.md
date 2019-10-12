@@ -32,3 +32,24 @@ turns daily sales data into monthly data for every shop/item pair
     - Create target mean encoding feature with CV loop regularization using KFold
     - item_id_target_mean = all_data.iloc[rest].groupby('item_id').target.mean()
     - all_data.loc[all_data.index[curr],'item_target_enc'] = all_data['item_id'].map(item_id_target_mean)
+
+
+#### sales1-grid-itmcat-target-meanenc-lag:
+    - Remove Outliers
+    - Duplicate shops
+    - City name from shop names
+    - Types and Subtypes from categories of items
+    - Revenue -> 
+        - sales['revenue'] = sales['item_price'] * sales['item_cnt_day']
+    - Target variables -> 
+        - Add sum of sales in a month for shops (target_shop)
+        - s = sales.groupby(['date_block_num', 'shop_id'], as_index=False).item_cnt_day.sum()
+        - s = s.rename(columns={'item_cnt_day' : 'target_shop'})
+    - Delta features ->
+        - Chnage in particular value over a period (month)
+        - Average item price 
+        - Shop revenue trend
+    - Mean/Target Encoding of all id variables
+    - Lag Features, previous values over different periods (1, 2, 3, 6, ... months before)
+    - division between train, val/dev sets
+    - and all the new features in the test set too.
