@@ -13,7 +13,7 @@
 `sales.groupby(['date_block_num', 'shop_id', 'item_id']).item_cnt_day.sum()`
 turns daily sales data into monthly data for every shop/item pair
 
-
+<hr/>
 
 - sales1(oct_as_pred) notebook
     - using last month data (October) as predictions for next month data (November)
