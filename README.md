@@ -15,14 +15,14 @@ turns daily sales data into monthly data for every shop/item pair
 
 <hr/>
 
-- sales1(oct_as_pred) notebook
+#### sales1(oct_as_pred)/ sales0.1 notebook:
     - using last month data (October) as predictions for next month data (November)
     - Score, root mean squared error (RMSE) => 1.16777
     
 
-- sales modified data csv notebook
+#### 'sales modified data csv'/ first half of sales0.15 notebook:
     - Create a grid of shop_ids and item_ids for different date_block_num with corresponding item_cnt_month
     
 
-- sales modified data csv(mean enc) notebook
+#### 'sales modified data csv(mean enc)'/ second half of sales0.15 notebook:
     - Add target mean encoding feature to the data
