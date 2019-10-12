@@ -1,6 +1,6 @@
 # PredictFutureSales
 
-### Predict total sales for every product and store in the next month from a  time-series dataset consisting of daily sales data
+### Predict total sales for every item and shop for the next month, from a time-series dataset consisting of daily sales data
 
 #### Columns:
 * items columns            :  ('item_name', 'item_id', 'item_category_id')
