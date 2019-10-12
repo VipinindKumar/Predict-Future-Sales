@@ -9,7 +9,9 @@
 * shops columns            :  ('shop_name', 'shop_id')
 * test columns             :  ('ID', 'shop_id', 'item_id')
 
-
+#### item_cnt_month:
+`sales.groupby(['date_block_num', 'shop_id', 'item_id']).item_cnt_day.sum()`
+turns daily sales data into monthly data for every shop/item pair
 
 
 
