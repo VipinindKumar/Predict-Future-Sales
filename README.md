@@ -26,3 +26,9 @@ turns daily sales data into monthly data for every shop/item pair
 
 #### 'sales modified data csv(mean enc)'/ second half of sales0.15 notebook:
     - Add target mean encoding feature to the data
+
+
+#### sales0.2-meanenc:
+    - Create target mean encoding feature with CV loop regularization using KFold
+    - item_id_target_mean = all_data.iloc[rest].groupby('item_id').target.mean()
+    - all_data.loc[all_data.index[curr],'item_target_enc'] = all_data['item_id'].map(item_id_target_mean)
