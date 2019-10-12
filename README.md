@@ -53,3 +53,11 @@ turns daily sales data into monthly data for every shop/item pair
     - Lag Features, previous values over different periods (1, 2, 3, 6, ... months before)
     - division between train, val/dev sets
     - and all the new features in the test set too.
+
+
+#### sales2-exttr-xgb:
+    - First used XGBoost.XGBRegressor (ran out of memory)
+    - Switched to ExtraTreesRegressor, with Mean Squared Error as metric
+    - Next used Iterative Increment training or Batch training with XGBoost with rmse (to get around limited memory problem)
+    - Sticked to 2 batches, to keep training/convergence faster and under memory limits
+    - shop_id is highly important when using XGBoost, but not very important when using ExtraTreesRegressor
