@@ -1,4 +1,4 @@
-# PredictFutureSales
+# Predict-Future-Sales
 
 ### Predict total sales for every item and shop for the next month, from a time-series dataset consisting of daily sales data
 
