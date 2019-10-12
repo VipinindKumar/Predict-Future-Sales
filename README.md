@@ -61,3 +61,12 @@ turns daily sales data into monthly data for every shop/item pair
     - Next used Iterative Increment training or Batch training with XGBoost with rmse (to get around limited memory problem)
     - Sticked to 2 batches, to keep training/convergence faster and under memory limits
     - shop_id is highly important when using XGBoost, but not very important when using ExtraTreesRegressor
+
+
+<hr/>
+
+#### Feature importance for XGBoost:
+<img src="https://github.com/VipinindKumar/Predict-Future-Sales/raw/master/feature_importance/xgboost.png" width="700">
+
+#### Feature importance for ExtraTreesRegressor:
+<img src="https://github.com/VipinindKumar/Predict-Future-Sales/raw/master/feature_importance/exttr.png" width="700">
