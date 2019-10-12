@@ -63,6 +63,12 @@ turns daily sales data into monthly data for every shop/item pair
     - shop_id is highly important when using XGBoost, but not very important when using ExtraTreesRegressor
 
 
+#### sales3-model_cnt:
+    - Script used to bypass limited memory and time
+    - by training, saving and re-training the models
+    - lead to overfitting could not increase the complexity of the models 
+    - and could not add the features dropped earlier because limited processing memory, while preparing the data
+
 <hr/>
 
 #### Feature importance for XGBoost:
