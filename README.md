@@ -1,6 +1,17 @@
 # PredictFutureSales
 
-Predict total sales for every product and store in the next month from a  time-series dataset consisting of daily sales data
+### Predict total sales for every product and store in the next month from a  time-series dataset consisting of daily sales data
+
+#### Columns:
+* items columns            :  ('item_name', 'item_id', 'item_category_id')
+* sales columns            :  ('date', 'date_block_num', 'shop_id', 'item_id', 'item_price', 'item_cnt_day')
+* item_categories columns  :  ('item_category_name', 'item_category_id')
+* shops columns            :  ('shop_name', 'shop_id')
+* test columns             :  ('ID', 'shop_id', 'item_id')
+
+
+
+
 
 - sales1(oct_as_pred) notebook
     - using last month data (October) as predictions for next month data (November)
