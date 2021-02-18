@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
 import pickle
+import xgboost
 
 app = Flask(__name__)
 
@@ -24,9 +25,12 @@ def predict():
 	# if shop or item is not available
 	if data.empty:
 		output = 'This Shop and Item combination is not available'
-	
 
-	return render_template('predict.html', pred=ftr)
+	# load the xgboost model
+	model = pickle.load(open('files/xgbmodel.dat', 'rb'))
+	output = model.predict(data)
+
+	return render_template('predict.html', pred=output)
 
 if __name__ == '__main__':
 	app.run()
