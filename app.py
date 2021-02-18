@@ -11,9 +11,21 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+	# input shop_id and item_id
 	ftr = np.array([int(x) for x in request.form.values()])
 	
+	# load the file to get all the engineered features
+	data = pickle.load(open('files/test.gzip', 'rb'))
+
+	# get all the features 
+	data = data[test.shop_id == ftr[0]]
+	data = data[test.item_id == ftr[1]]
+
+	# if shop or item is not available
+	if data.empty:
+		output = 'This Shop and Item combination is not available'
 	
+
 	return render_template('predict.html', pred=ftr)
 
 if __name__ == '__main__':
