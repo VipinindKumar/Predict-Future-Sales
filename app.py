@@ -12,7 +12,7 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
 	ftr = np.array([int(x) for x in request.form.values()])
-
+	
 	
 	return render_template('predict.html', pred=ftr)
 
