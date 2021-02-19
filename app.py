@@ -36,7 +36,10 @@ def predict():
 
 	# load the xgboost model
 	model = pickle.load(open('files/xgbmodel.dat', 'rb'))
+
+	# make the prediction on the shop and item
 	output = model.predict(data)
+	output = output[0]
 
 	return render_template('predict.html', pred=output)
 
