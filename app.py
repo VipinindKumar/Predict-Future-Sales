@@ -42,12 +42,13 @@ def predict():
 	sys.stdout.flush()
 
 	# load the xgboost model
-	model = pickle.load(open('files/xgbmodel.dat', 'rb'))
+	model = xgboost.Booster()  # init model
+	model.load_model('files/xgbmodel.json')
 	print('model loaded')
 	sys.stdout.flush()
-	
+
 	# make the prediction on the shop and item
-	output = model.predict(data)
+	output = model.predict(xgboost.DMatrix(data))
 	print('prediction made')
 	sys.stdout.flush()
 	output = output[0]
