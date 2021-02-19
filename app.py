@@ -26,6 +26,14 @@ def predict():
 	if data.empty:
 		output = 'This Shop and Item combination is not available'
 
+	# drop columns not used for training
+	dropcols = ['type_id', 'target_item_cat_lag_5', 'city_id', 'target_item_cat_lag_3', 'target_city_lag_5', 'target_item_type_lag_6', 
+            'delta_avg_shop_revenue_lag_6', 'delta_avg_shop_revenue_lag_3', 'delta_avg_item_price_lag_2', 'item_category_id',
+            'delta_avg_item_price_lag_4', 'target_city_lag_4', 'target_item_cat_lag_4', 'subtype_id', 'target_city_lag_3', 
+            'target_item_lag_3', 'target_item_subtype_lag_4', 'target_item_lag_5', 'target_item_cat_lag_6', 'target_item_subtype_lag_6']
+
+	data = data.drop(columns=dropcols)
+
 	# load the xgboost model
 	model = pickle.load(open('files/xgbmodel.dat', 'rb'))
 	output = model.predict(data)
