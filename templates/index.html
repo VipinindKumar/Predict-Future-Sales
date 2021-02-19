@@ -2,13 +2,15 @@
 	<title>Hellllo WWoorrld</title>
 </head>
 <body>
+	<h1 style="text-align: center;">Predicting Future Sales for the items in online shops</h1> 
 	<h2 style="text-align: center;">Enter Shop_id and Item_id for prediction for their sale count next month</h2>
 	<form action="/predict" method="post">
 		<input type="text" name="shop_id" placeholder="Shop ID" required>
 		<input type="text" name="item_id" placeholder="Item ID" required>
 		<input type="submit" value="Submit">
 	</form>
-	<h3>All 'shop_id's</h3>
+	<br><br><br>
+	<h4>All 'shop_id's</h4>
 	<div><b>np.unique(data['shop_id'].values)</b></div>
 	<div>array([ 2,  3,  4,  5,  6,  7, 11, 12, 14, 15, 16, 18, 19, 21, 22, 24, 25,
        26, 28, 31, 34, 35, 36, 37, 38, 39, 41, 42, 44, 45, 46, 47, 48, 49,
@@ -17,7 +19,7 @@
 
    <br>
 
-   <h3>First 20 'item_id's</h3>
+   <h4>First 20 'item_id's</h4>
    <div><b>np.unique(data['item_id'].values)[:20]</b></div>
    <div>array([30, 31, 32, 33, 38, 42, 45, 51, 53, 57, 59, 62, 64, 67, 69, 70, 72,
        76, 80, 83], dtype=int16)
