@@ -26,6 +26,8 @@ def predict():
 	if data.empty:
 		output = 'This Shop and Item combination is not available'
 
+		return render_template('predict.html', pred=output)
+
 	# drop columns not used for training
 	dropcols = ['type_id', 'target_item_cat_lag_5', 'city_id', 'target_item_cat_lag_3', 'target_city_lag_5', 'target_item_type_lag_6', 
             'delta_avg_shop_revenue_lag_6', 'delta_avg_shop_revenue_lag_3', 'delta_avg_item_price_lag_2', 'item_category_id',
