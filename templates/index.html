@@ -4,12 +4,14 @@
 <body>
 	<h1 style="text-align: center;">Predicting Future Sales for the items in online shops</h1> 
 	<h2 style="text-align: center;">Enter Shop_id and Item_id for prediction for their sale count next month</h2>
+
+	<br><br><br><br><br>
 	<form action="/predict" method="post">
 		<input type="text" name="shop_id" placeholder="Shop ID" required>
 		<input type="text" name="item_id" placeholder="Item ID" required>
 		<input type="submit" value="Submit">
 	</form>
-	<br><br><br>
+	<br>
 	<h4>All 'shop_id's</h4>
 	<div><b>np.unique(data['shop_id'].values)</b></div>
 	<div>array([ 2,  3,  4,  5,  6,  7, 11, 12, 14, 15, 16, 18, 19, 21, 22, 24, 25,
