@@ -2,6 +2,9 @@
 
 ### Predict total sales for every item and shop for the next month, from a time-series dataset consisting of daily sales data
 
+### Model deployed for predictions on https://predict-future-sales.herokuapp.com/
+
+
 #### Columns:
 * items columns            :  ('item_name', 'item_id', 'item_category_id')
 * sales columns            :  ('date', 'date_block_num', 'shop_id', 'item_id', 'item_price', 'item_cnt_day')
