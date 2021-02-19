@@ -45,6 +45,7 @@ def predict():
 	model = pickle.load(open('files/xgbmodel.dat', 'rb'))
 	print('model loaded')
 	sys.stdout.flush()
+	
 	# make the prediction on the shop and item
 	output = model.predict(data)
 	print('prediction made')
