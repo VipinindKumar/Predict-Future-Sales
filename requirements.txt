@@ -1,4 +1,4 @@
 flask
 pandas
-xgboost
+xgboost==0.82
 gunicorn
