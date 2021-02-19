@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import pickle
 import xgboost
-import sys
 
 app = Flask(__name__)
 
@@ -35,27 +34,17 @@ def predict():
             'delta_avg_item_price_lag_4', 'target_city_lag_4', 'target_item_cat_lag_4', 'subtype_id', 'target_city_lag_3', 
             'target_item_lag_3', 'target_item_subtype_lag_4', 'target_item_lag_5', 'target_item_cat_lag_6', 'target_item_subtype_lag_6']
 
-	print('before drop')
-	sys.stdout.flush()
 	data = data.drop(columns=dropcols)
-	print('afetr drop')
-	sys.stdout.flush()
 
 	# load the xgboost model
 	model = xgboost.Booster()  # init model
 	model.load_model('files/xgbmodel.json')
-	print('model loaded')
-	sys.stdout.flush()
 
 	# make the prediction on the shop and item
 	output = model.predict(xgboost.DMatrix(data))
-	print('prediction made')
-	sys.stdout.flush()
 	output = output[0]
-	print('int selected')
-	sys.stdout.flush()
 
 	return render_template('predict.html', pred=output)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
