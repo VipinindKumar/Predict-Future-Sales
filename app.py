@@ -19,8 +19,8 @@ def predict():
 	data = pickle.load(open('files/test.gzip', 'rb'))
 
 	# get all the features 
-	data = data[test.shop_id == ftr[0]]
-	data = data[test.item_id == ftr[1]]
+	data = data[data.shop_id == ftr[0]]
+	data = data[data.item_id == ftr[1]]
 
 	# if shop or item is not available
 	if data.empty:
