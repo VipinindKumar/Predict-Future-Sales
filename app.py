@@ -4,6 +4,9 @@ import pandas as pd
 import pickle
 import xgboost
 
+import mysql.connector
+import json
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -46,5 +49,104 @@ def predict():
 
 	return render_template('predict.html', pred=output)
 
+@app.route('/checkdb')
+def get_widgets():
+  mydb = mysql.connector.connect(
+    host="mysqldb",
+    user="root",
+    password="12345",
+    database="inventory"
+  )
+  cursor = mydb.cursor()
+
+  cursor.execute("SELECT * FROM widgets")
+
+  row_headers=[x[0] for x in cursor.description] #this will extract row headers
+
+  results = cursor.fetchall()
+
+  json_data=[]
+  for result in results:
+    json_data.append(dict(zip(row_headers,result)))
+
+  cursor.close()
+
+  return json.dumps(json_data)
+
+@app.route('/initdb')
+def db_init():
+  mydb = mysql.connector.connect(
+    host="mysqldb",
+    user="root",
+    password="12345"
+  )
+  cursor = mydb.cursor()
+
+  # cursor.execute("DROP DATABASE IF EXISTS inventory")
+  cursor.execute("CREATE DATABASE IF NOT EXISTS inventory")
+
+  cursor.close()
+
+  mydb = mysql.connector.connect(
+    host="mysqldb",
+    user="root",
+    password="12345",
+    database="inventory"
+  )
+  cursor = mydb.cursor()
+
+  # cursor.execute("DROP TABLE IF EXISTS widgets")
+  cursor.execute("CREATE TABLE IF NOT EXISTS widgets (name VARCHAR(255), description VARCHAR(255))")
+
+  cursor.close()
+
+  return 'init database'
+
+@app.route('/adddb')
+def db_add():
+  # Initializes the database
+  db_init()
+
+  # connect to the database
+  mydb = mysql.connector.connect(
+    host="mysqldb",
+    user="root",
+    password="12345",
+    database="inventory"
+  )
+  cursor = mydb.cursor()
+
+  # add some values to the table
+  # cursor.execute("USE inventory")
+  # cursor.execute("INSERT INTO widgets (name, description) VALUES (\"Vipin\", \"hoho decription\")")
+
+  # insert many
+  sql = "INSERT INTO widgets (name, description) VALUES (%s, %s)"
+  val = [
+    ('Peter', 'Lowstreet 4'),
+    ('Amy', 'Apple st 652'),
+    ('Hannah', 'Mountain 21'),
+    ('Michael', 'Valley 345'),
+    ('Sandy', 'Ocean blvd 2'),
+    ('Betty', 'Green Grass 1'),
+    ('Richard', 'Sky st 331'),
+    ('Susan', 'One way 98'),
+    ('Vicky', 'Yellow Garden 2'),
+    ('Ben', 'Park Lane 38'),
+    ('William', 'Central st 954'),
+    ('Chuck', 'Main Road 989'),
+    ('Viola', 'Sideway 1633')
+  ]
+
+  cursor.executemany(sql, val)
+
+  mydb.commit()
+
+  cursor.close()
+
+  return "Succesfully Created and Added values to the database"
+
+
+
 if __name__ == '__main__':
-	app.run()
+	app.run(host="172.20.0.100")
