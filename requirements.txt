@@ -1,4 +1,4 @@
 flask
 pandas
 xgboost==0.82
-gunicorn
+mysql-connector-python==8.0.29
