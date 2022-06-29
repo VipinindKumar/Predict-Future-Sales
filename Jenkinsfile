@@ -13,7 +13,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 retry(3) {
-                    sh 'echo "Deploy stage is working now'
+                    sh 'echo "Deploy stage is working now"'
                 }
             }
         }
