@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/VipinindKumar/Predict-Future-Sales.git'
+                checkout scm
             }   
         }
     }
